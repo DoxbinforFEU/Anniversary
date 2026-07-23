@@ -1,0 +1,246 @@
+/* ==========================================================================
+   GALLERY SHARED
+   ========================================================================== */
+
+.gallery-intro{
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto clamp(3.5rem, 8vw, 6rem);
+}
+.gallery-intro p{ margin-top: .7rem; }
+
+.gallery-label{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(1.6rem, 4vw, 2.4rem);
+}
+.gallery-label .hr-gold{ flex: 1; width: auto; margin: 0; }
+.gallery-label h3{ white-space: nowrap; }
+.gallery-label .eyebrow:last-child{ white-space: nowrap; color: var(--ink-faint); }
+
+/* ==========================================================================
+   01 — CORKBOARD
+   ========================================================================== */
+
+.corkboard{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1.4rem, 3vw, 2.2rem) clamp(1rem, 3vw, 2rem);
+  padding: clamp(2rem, 5vw, 3rem);
+  border-radius: 4px;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.03), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(255,255,255,.025), transparent 40%),
+    linear-gradient(160deg, #4a3a2e, #362a21);
+  box-shadow: inset 0 0 60px rgba(0,0,0,.4), 0 30px 60px -25px rgba(0,0,0,.6);
+}
+
+.polaroid{
+  --tilt: 0deg;
+  margin: 0;
+  width: clamp(150px, 20vw, 210px);
+  background: var(--ivory);
+  padding: 12px 12px 40px;
+  border-radius: 1px;
+  box-shadow: 0 18px 32px -12px rgba(0,0,0,.55);
+  transform: rotate(var(--tilt));
+  position: relative;
+  cursor: pointer;
+  transition: transform .5s var(--ease-soft), box-shadow .5s var(--ease-soft);
+}
+.polaroid:hover,
+.polaroid:focus-visible{
+  transform: rotate(0deg) scale(1.06) translateY(-6px);
+  box-shadow: 0 28px 46px -14px rgba(0,0,0,.65);
+  z-index: 5;
+}
+.polaroid img{
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  filter: sepia(.12) saturate(.9) contrast(1.03);
+}
+.polaroid figcaption{
+  position: absolute;
+  bottom: 12px; left: 12px; right: 12px;
+  text-align: center;
+  font-family: var(--f-script);
+  font-size: 1.05rem;
+  color: var(--espresso);
+}
+.polaroid__pin{
+  position: absolute;
+  top: -9px; left: 50%;
+  transform: translateX(-50%);
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #e7c894, var(--gold) 60%, #8a6d3a);
+  box-shadow: 0 3px 5px rgba(0,0,0,.5);
+  z-index: 2;
+}
+
+/* ==========================================================================
+   02 — FILMSTRIP
+   ========================================================================== */
+
+.filmstrip-section{
+  position: relative;
+  background: var(--walnut-deep);
+  overflow: hidden;
+}
+.filmstrip-pin{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.filmstrip-heading{
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.filmstrip-track{
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 1.2rem 8vw;
+  position: relative;
+  will-change: transform;
+  background:
+    repeating-linear-gradient(90deg, #0d0a09 0 6px, #17110f 6px 12px);
+}
+.filmstrip-track::before,
+.filmstrip-track::after{
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: 22px;
+  background-image: repeating-linear-gradient(90deg, transparent 0 10px, rgba(0,0,0,.55) 10px 22px, transparent 22px 32px);
+  background-color: #0a0807;
+}
+.filmstrip-track::before{ top: 0; }
+.filmstrip-track::after{ bottom: 0; }
+
+.filmstrip-frame{
+  flex: 0 0 auto;
+  width: clamp(220px, 26vw, 340px);
+  margin: 0 clamp(.5rem, 1.4vw, 1rem);
+  background: #0d0a09;
+  padding: 10px 10px 26px;
+  border: 1px solid rgba(201,168,106,.25);
+  cursor: pointer;
+  position: relative;
+}
+.filmstrip-frame img{
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  filter: grayscale(.15) sepia(.18) contrast(1.05);
+}
+.filmstrip-frame figcaption{
+  position: absolute;
+  bottom: 6px; left: 0; right: 0;
+  text-align: center;
+  font-family: var(--f-display);
+  font-size: .62rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+}
+
+/* ==========================================================================
+   03 — KEEPSAKE (floating field)
+   ========================================================================== */
+
+.keepsake{
+  position: relative;
+  height: clamp(420px, 55vw, 640px);
+  border-radius: 4px;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(201,168,106,.08), transparent 60%),
+    linear-gradient(150deg, #241b17, #150f0d);
+  box-shadow: inset 0 0 90px rgba(0,0,0,.55);
+  overflow: hidden;
+}
+.keepsake__field{ position: absolute; inset: 0; }
+
+.keepsake-card{
+  position: absolute;
+  width: clamp(120px, 13vw, 170px);
+  margin: 0;
+  cursor: pointer;
+  filter: drop-shadow(0 18px 30px rgba(0,0,0,.55));
+  will-change: transform;
+}
+.keepsake-card img{
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border: 6px solid var(--ivory);
+  border-radius: 1px;
+  filter: sepia(.1) saturate(.92);
+}
+
+.keepsake--mobile-fallback{ display: none; }
+
+@media (max-width: 720px){
+  .keepsake{ display: none; }
+  .keepsake--mobile-fallback{ display: flex; }
+}
+
+/* ==========================================================================
+   04 — JOURNAL CAROUSEL
+   ========================================================================== */
+
+.carousel{ position: relative; }
+.carousel__viewport{
+  overflow: hidden;
+  cursor: grab;
+  padding: 1.5rem 0;
+}
+.carousel__viewport:active{ cursor: grabbing; }
+.carousel__track{
+  display: flex;
+  gap: clamp(1.2rem, 3vw, 2rem);
+  width: max-content;
+  will-change: transform;
+}
+.carousel-card{
+  flex: 0 0 auto;
+  width: clamp(180px, 22vw, 260px);
+  margin: 0;
+  background: var(--ivory);
+  padding: 10px 10px 34px;
+  box-shadow: 0 24px 40px -16px rgba(0,0,0,.55);
+  transform: rotate(0deg);
+}
+.carousel-card:nth-child(odd){ transform: rotate(-1.6deg); }
+.carousel-card:nth-child(even){ transform: rotate(1.6deg); }
+.carousel-card img{
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  pointer-events: none;
+  filter: sepia(.1) saturate(.92) contrast(1.02);
+}
+.carousel-card figcaption{
+  margin-top: 10px;
+  text-align: center;
+  font-family: var(--f-script);
+  font-size: 1.15rem;
+  color: var(--espresso);
+}
+.carousel__hint{
+  text-align: center;
+  margin-top: 1rem;
+  font-family: var(--f-display);
+  font-size: .66rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}

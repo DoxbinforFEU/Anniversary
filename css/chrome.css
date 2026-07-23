@@ -1,0 +1,45 @@
+/* ==========================================================================
+   CHROME — preloader, scroll progress thread, footer
+   ========================================================================== */
+
+.preloader{
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--walnut-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.preloader__mark{
+  font-family: var(--f-display);
+  letter-spacing: .3em;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  color: var(--gold);
+  opacity: 0;
+}
+
+.progress-thread{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  z-index: 900;
+  background: rgba(201,168,106,.12);
+}
+.progress-thread__fill{
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--taupe), var(--gold));
+  box-shadow: 0 0 8px rgba(201,168,106,.5);
+}
+
+.site-footer{
+  text-align: center;
+  padding: 3rem 1rem 3.5rem;
+  font-family: var(--f-display);
+  font-size: .68rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  border-top: 1px solid var(--paper-line);
+}
